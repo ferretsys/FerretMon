@@ -6,11 +6,11 @@
     <title>Server Monitor</title>
     <style>
       body {
-        background-color: rgb(30, 30, 34);
+        background-color: var(--black);
         color: rgb(233, 234, 242);
         font-family: "Courier New", Courier, monospace;
         margin: 0;
-        padding: 15px;
+        padding: 5px;
         box-sizing: border-box;
         height: 100vh;
         width: 100vw;
@@ -19,10 +19,16 @@
         color: rgb(233, 234, 242);
         font-weight: bold;
       }
+      .bold {
+        font-weight: bold;
+      }
     </style>
+    <link rel="stylesheet" href="/colour.css" />
   </head>
   <body>
     <div id="terminal">
+        <div id="header"></div>
+        <div id="connection_statistics"></div>
         <div id="server_statistics"></div>
         <div id="statistics"></div>
     </div>

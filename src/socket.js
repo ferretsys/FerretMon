@@ -1,4 +1,4 @@
-import { buildAndSendServerData, buildAndSendStatisticData } from "./internalsocket.js";
+import { buildAndSendConnectionData, buildAndSendServerData, buildAndSendStatisticData } from "./internal_server.js";
 
 var activeConnections = [];
 
@@ -20,7 +20,8 @@ export function handleSocket(ws) {
     activeConnections.push(ws);
     console.log('Client connected to monitor socket');
     buildAndSendStatisticData(ws);
-    buildAndSendServerData(ws)
+    buildAndSendServerData(ws);
+    buildAndSendConnectionData(ws);
 
     const heartbeatInterval = setInterval(() => {
         if (ws.readyState === ws.OPEN) {

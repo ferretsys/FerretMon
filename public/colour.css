@@ -1,0 +1,14 @@
+:root {
+    --black: rgb(24, 24, 27);
+    --console-red: rgb(255, 153, 153);
+    --console-orange: rgb(255, 204, 153);
+    --console-green: rgb(153, 255, 153);
+    --console-yellow: rgb(255, 255, 153);
+    --console-blue: rgb(153, 153, 255);
+    --console-magenta: rgb(243, 153, 255);
+    --console-pink: rgb(255, 153, 204);
+    --console-cyan: rgb(153, 255, 255);
+    --console-white: rgb(255, 255, 255);
+
+    --console-gray: rgb(153, 153, 153);
+}

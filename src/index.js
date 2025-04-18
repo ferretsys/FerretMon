@@ -3,7 +3,7 @@ import httpProxy from "http-proxy";
 import fs from "fs";
 import yaml from "js-yaml";
 import {} from "./monitor.js"; // Import monitor.js to ensure it runs
-import {} from "./internalsocket.js"; // Import internalsocket.js to ensure it runs
+import {} from "./internal_server.js"; // Import internalsocket.js to ensure it runs
 
 let routeConfig;
 try {
