@@ -56,7 +56,7 @@ function updateConnectionStatistics(element, data) {
     var special = {
         "downtime" : (f, data) => data === 0 ? f("x", "gray") : f(console.log(data) || createElapsedTimestamp(data), "red"),
         "is_connected" : (f, data) => data ? f("true", "green") : f("false", "red"),
-        "notified_update_downtime_timestamp": (f, data) => data === 0  || Math.floor(Date.now() / 1000) - data > 120 ? f("x", "gray") : f(createElapsedTimestamp(data), "orange"),
+        "notified_update_downtime_timestamp": (f, data) => data === 0  || Math.floor(Date.now() / 1000) - data > 120 ? f("x", "gray") : f(createElapsedTimestampAgo(data), "orange"),
     };
     buildGenericFieldList(element, data, lastConnectionStatistics, BASE_HANDLER, special);
     lastConnectionStatistics = data;
