@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Server Down :&#40;</title>
+    <style>
+      body {
+        background-color: black;
+        color: rgb(233, 234, 242);
+        font-family: "Courier New", Courier, monospace;
+        margin: 0;
+        padding: 15px;
+        box-sizing: border-box;
+        height: 100vh;
+        width: 100vw;
+      }
+      .blinking-cursor-hide {
+        opacity: 0;
+      }
+      a {
+        color: rgb(233, 234, 242);
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="terminal">
+      <b>Server Down</b>
+      <p>Proxy was UNABLE to reach the server</p>
+      <p>The server is currently down :&#40;</p>
+        <a href="https://ferretmon.oreostack.uk" target="_blank" rel="noopener noreferrer">Check the server status with the monitor</a>
+      <p>><span id="blinking-cursor">_</span></p>
+    </div>
+    <script>
+      // Optional: Add a blinking cursor effect
+      const terminal = document.getElementById("blinking-cursor");
+      setInterval(() => {
+        terminal.classList.toggle("blinking-cursor-hide");
+      }, 500);
+    </script>
+  </body>
+</html>
