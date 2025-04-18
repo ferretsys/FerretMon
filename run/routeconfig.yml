@@ -2,5 +2,3 @@ ferret.oreostack.uk:
   port: 81
 ferretmon.oreostack.uk:
   port: 82
-localhost:
-  port: 83
