@@ -1,2 +1,32 @@
-<h1>ferretmon</h1>
-index of ferret monitor
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Server Monitor</title>
+    <style>
+      body {
+        background-color: rgb(30, 30, 34);
+        color: rgb(233, 234, 242);
+        font-family: "Courier New", Courier, monospace;
+        margin: 0;
+        padding: 15px;
+        box-sizing: border-box;
+        height: 100vh;
+        width: 100vw;
+      }
+      a {
+        color: rgb(233, 234, 242);
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="terminal">
+        <div id="server_statistics"></div>
+        <div id="statistics"></div>
+    </div>
+    <script src="terminal.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
