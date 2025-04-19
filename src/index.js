@@ -23,7 +23,8 @@ const server = http.createServer((req, res) => {
     const target = `http://${routeConfig[host].domain || "localhost"}${routeConfig[host].port ? `:${routeConfig[host].port}` : ""}`;
     proxy.web(req, res, { target }, (err) => {
       if (err && (err.code === "ECONNREFUSED" || err.code === "ETIMEDOUT")) {
-        console.log(err);
+        console.log("Error connecting to target:", err.message);
+        console.log("Fallback to serverdown.html due to connection error");
         const fallbackTarget = "http://localhost:82/serverdown.html";
         http
           .get(fallbackTarget, (fallbackRes) => {
