@@ -17,6 +17,7 @@ try {
 const proxy = httpProxy.createProxyServer();
 
 const server = http.createServer((req, res) => {
+  console.log("recived request", req.url, req.headers.host);
   const host = req.headers.host;
 
   if (routeConfig[host]) {
