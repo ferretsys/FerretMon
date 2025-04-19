@@ -17,7 +17,6 @@ try {
 const proxy = httpProxy.createProxyServer();
 
 const server = http.createServer((req, res) => {
-  console.log("recived request", req.url, req.headers.host);
   const host = req.headers.host;
 
   if (routeConfig[host]) {
@@ -29,16 +28,29 @@ const server = http.createServer((req, res) => {
         const fallbackTarget = "http://localhost:82/serverdown.html";
         http
           .get(fallbackTarget, (fallbackRes) => {
-            res.writeHead(fallbackRes.statusCode, fallbackRes.headers);
+            res.writeHead(fallbackRes.statusCode, {
+              ...fallbackRes.headers,
+              "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+              Pragma: "no-cache",
+              Expires: "0",
+            });
             fallbackRes.pipe(res);
           })
           .on("error", (fallbackErr) => {
             console.error("Fallback error:", fallbackErr.message);
-            res.writeHead(502);
+            res.writeHead(502, {
+              "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+              Pragma: "no-cache",
+              Expires: "0",
+            });
             res.end("Bad Gateway");
           });
       } else {
-        res.writeHead(502);
+        res.writeHead(502, {
+          "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        });
         res.end("Bad Gateway");
       }
     });
@@ -49,18 +61,31 @@ const server = http.createServer((req, res) => {
         console.log("Fallback to serverdown.html due to 521 error");
         http
           .get(fallbackTarget, (fallbackRes) => {
-            res.writeHead(fallbackRes.statusCode, fallbackRes.headers);
+            res.writeHead(fallbackRes.statusCode, {
+              ...fallbackRes.headers,
+              "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+              Pragma: "no-cache",
+              Expires: "0",
+            });
             fallbackRes.pipe(res);
           })
           .on("error", (fallbackErr) => {
             console.error("Fallback error:", fallbackErr.message);
-            res.writeHead(502);
+            res.writeHead(502, {
+              "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+              Pragma: "no-cache",
+              Expires: "0",
+            });
             res.end("Bad Gateway");
           });
       }
     });
   } else {
-    res.writeHead(403);
+    res.writeHead(403, {
+      "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+      Pragma: "no-cache",
+      Expires: "0",
+    });
     res.end("Domain not found in configuration");
   }
 });
