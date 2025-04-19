@@ -23,6 +23,7 @@ const server = http.createServer((req, res) => {
     const target = `http://${routeConfig[host].domain || "localhost"}${routeConfig[host].port ? `:${routeConfig[host].port}` : ""}`;
     proxy.web(req, res, { target }, (err) => {
       if (err && (err.code === "ECONNREFUSED" || err.code === "ETIMEDOUT")) {
+        console.log(err);
         const fallbackTarget = "http://localhost:82/serverdown.html";
         http
           .get(fallbackTarget, (fallbackRes) => {
@@ -43,6 +44,7 @@ const server = http.createServer((req, res) => {
     req.on("response", (proxyRes) => {
       if (proxyRes.statusCode === 521) {
         const fallbackTarget = "http://localhost:82/serverdown.html";
+        console.log("Fallback to serverdown.html due to 521 error");
         http
           .get(fallbackTarget, (fallbackRes) => {
             res.writeHead(fallbackRes.statusCode, fallbackRes.headers);
